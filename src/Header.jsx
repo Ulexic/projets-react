@@ -1,5 +1,5 @@
 const Header = () => {
-    const title = 'Hello World'
+    const title = 'Cocktail App'
 
     return (
         <div>
