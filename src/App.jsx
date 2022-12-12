@@ -1,6 +1,6 @@
 import Header from "./Header";
 import Footer from "./Footer";
-import ListArticle from "./ListArticle";
+import ListArticles from "./ListArticles";
 
 function App() {
 
@@ -12,6 +12,7 @@ function App() {
       date: new Date("2021-01-01"),
       content: "Contenu de l'article 1",
       isPublished: true,
+      id: '0',
     },
     {
       title: "Titre de l'article 2",
@@ -20,6 +21,7 @@ function App() {
       date: new Date("2021-01-01"),
       content: "Contenu de l'article 2",
       isPublished: false,
+      id: '1',
     },
     {
       title: "Titre de l'article 3",
@@ -28,6 +30,7 @@ function App() {
       date: new Date("2021-01-01"),
       content: "Contenu de l'article 3",
       isPublished: true,
+      id: '2',
     },
   ];
 
@@ -40,9 +43,9 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Header /> */}
-      <ListArticle articles={publishedArticles} />
-      {/* <Footer /> */}
+      <Header />
+      <ListArticles articles={publishedArticles} />
+      <Footer />
     </div>
   );
 }
