@@ -1,12 +1,13 @@
-const Article = (prop, key) => {
+const Article = (prop) => {
+    console.log(prop.article);
     return (
-        <li key={key}>
+        <article >
             <h1>{prop.article.title}</h1>
             <h2>{prop.article.subtitle}</h2>
-            <p>{prop.article.date.getDate()}</p>
             <img src={prop.article.image} />
+            <i>{prop.article.date.toDateString()}</i>
             <p>{prop.article.content}</p>
-        </li>
+        </article>
     );
 }
 
