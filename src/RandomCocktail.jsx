@@ -1,31 +1,29 @@
 import { useState } from "react"
-import RandomCocktailIngredients from "./RandomCocktailIngredients"
 
-const RandomCocktail = () => {
-    const [randomCocktail, setrandomCocktail] = useState(null)
+const RandomCocktail = (prop) => {
+    const cocktail = prop.cocktail
 
-    const onClickHandler = async () => {
-        fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php")
-            .then(response => response.json())
-            .then(data => setrandomCocktail(data.drinks[0]))
+    const ingredients = [];
+    for (let i = 1; i <= 15; i++) {
+        const ingredient = cocktail[`strIngredient${i}`];
+        const amount = cocktail[`strMeasure${i}`] ? cocktail[`strMeasure${i}`] : '';
+
+        if (ingredient) {
+            ingredients.push(`${amount} ${ingredient}`);
+        }
     }
 
     return (
-        <div>
-            <button onClick={onClickHandler}>Random cocktail</button>
-            {
-                randomCocktail ? (
-                    <>
-                        <h1>{randomCocktail.strDrink}</h1>
-                        <img src={randomCocktail.strDrinkThumb} alt={randomCocktail.strDrink} />
-                        <p>{randomCocktail.strInstructions}</p>
-                        <RandomCocktailIngredients cocktail={randomCocktail} />
-                    </>
-                ) : (
-                    <p>Click on the button to get a random cocktail</p>
-                )
-            }
-        </div>
+        <>
+            <h1>{cocktail.strDrink}</h1>
+            <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
+            <p>{cocktail.strInstructions}</p>
+            <ul>
+                {ingredients.map((ingredient, index) => (
+                    <li key={index}>{ingredient}</li>
+                ))}
+            </ul>
+        </>
     )
 }
 

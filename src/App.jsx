@@ -2,6 +2,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import ListArticles from "./ListArticles";
 import RandmCocktail from "./RandomCocktail";
+import RandomCocktailButton from "./RandomCocktailButton";
 
 function App() {
 
@@ -46,7 +47,7 @@ function App() {
     <div className="App">
       <Header />
       {/* <ListArticles articles={publishedArticles} /> */}
-      <RandmCocktail />
+      <RandomCocktailButton />
       <Footer />
     </div>
   );
